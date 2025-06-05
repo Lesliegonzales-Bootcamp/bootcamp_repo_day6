@@ -1,0 +1,57 @@
+<mvc:View controllerName="sapips.training.odata.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m.">
+    <Page id="page" title="{i18n>title}">
+    
+  <Table
+    id="productTable"
+    headerText="{i18n>productTableTitle}"
+    items="{
+      path: '/Products',
+      sorter: { path: 'ProductName' },
+      filters: [
+        {
+          path: 'Discontinued',
+          operator: 'EQ',
+          value1: false
+        }
+      ]
+    }"
+    inset="false"
+    mode="None">
+
+    <columns>
+      <Column id="_IDGenColumn">
+        <Text id="_IDGenText" text="{i18n>productColumn}" />
+      </Column>
+      <Column id="_IDGenColumn1">
+        <Text id="_IDGenText1" text="{i18n>supplierColumn}" />
+      </Column>
+      <Column id="_IDGenColumn2">
+        <Text id="_IDGenText2" text="{i18n>priceColumn}" />
+      </Column>
+    </columns>
+
+    <items>
+      <ColumnListItem id="_IDGenColumnListItem">
+        <cells>
+          <!-- Product: ObjectIdentifier with ProductName and ProductID -->
+          <ObjectIdentifier id="_IDGenObjectIdentifier1"
+            title="{ProductName}"
+            text="ID: {ProductID}" />
+
+          <!-- Supplier ID -->
+          <Text id="_IDGenText3" text="{SupplierID}" />
+
+          <!-- Price: ObjectIdentifier with UnitPrice and QuantityPerUnit -->
+          <ObjectIdentifier id="_IDGenObjectIdentifier2"
+            title="{UnitPrice}"
+            text="{QuantityPerUnit}" />
+        </cells>
+      </ColumnListItem>
+    </items>
+
+  </Table>
+
+    </Page>
+</mvc:View>
